@@ -1,0 +1,82 @@
+:root {
+    --size: 500px;
+    --offset: 20px;
+    --cell-size: calc(var(--size) / 4) - var(--offset);
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: white;
+}
+
+#shuffle {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+#shuffle:hover {
+    transform: rotate(180deg);
+}
+
+#field {
+    background-color: skyblue;
+    border: calc(var(--offset) / 2) solid skyblue;
+    border-radius: 5px;
+    
+    width: var(--size);
+    height: var(--size);
+    margin: calc((100vh - var(--size) - var(--offset)) / 2) auto;
+    position: relative;
+}
+
+.field__cell {
+    position: absolute;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border-radius: inherit;
+}
+
+.field__cell--null {
+    background-color: cornflowerblue;
+}
+
+.field__cell--tile {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+}
+
+
+#modal {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: rgba(0, 0, 0, .7);
+}
+
+#modal.modal--visible {
+    visibility: visible;
+    opacity: 1;
+}
